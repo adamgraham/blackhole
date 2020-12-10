@@ -101,7 +101,7 @@
 		
 		internal function flipColors():void 
 		{
-			_colorFrame = (_colorFrame == 1) ? (Random.integerInclusive( 2, 8 )) : 1;
+			_colorFrame = (_colorFrame == 1) ? (Random.integerInclusive( 2, totalFrames )) : 1;
 			
 			var enemies:Vector.<Enemy> = EnemySpawner._enemies;
 			var i:uint = EnemySpawner._enemies.length;
@@ -120,10 +120,10 @@
 			else 
 			{
 				_shootDelay = SHOOT_DELAY_WHITE;
-				_bulletColorFrame = Random.integerInclusive( 1, 8 );
+				_bulletColorFrame = Random.integerInclusive( 1, totalFrames );
 				
 				//Enemy._enemiesVisible = true;
-				Enemy._enemyColorFrame = Random.integerInclusive( 2, 8 );
+				Enemy._enemyColorFrame = Random.integerInclusive( 2, totalFrames );
 				
 				_background.gotoAndStop( _colorFrame );
 				while ( i-- ) enemies[i].gotoAndStop( Enemy._enemyColorFrame );
@@ -196,7 +196,7 @@
 					bullet.x = x;
 					bullet.y = y;
 					
-					if ( Math.random() < 0.75 ) bullet.gotoAndStop( _bulletColorFrame );
+					if ( Math.random() < 0.85 ) bullet.gotoAndStop( _bulletColorFrame );
 					else bullet.play();
 					
 					_gameStage.addChildAt( bullet, 1 );
